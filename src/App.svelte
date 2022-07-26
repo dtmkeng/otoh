@@ -88,7 +88,7 @@
         <div class="list">
           <div class="title">{item.word}</div>
           <span class="when">{dayjs(item.date).locale("th").toString()}</span>
-          <p>{item.sentence}</p>
+          <span>{item.sentence}</span>
         </div>
       {/each}
     </div>
@@ -101,10 +101,10 @@
     color: rgb(232, 84, 84);
   }
   .sentence-list {
-    width: 63%;
+    width: 100%;
     margin-top: 32px;
     overflow: auto;
-    height: 560px;
+    height: 350px;
   }
 
   .list {
@@ -113,7 +113,7 @@
   }
 
   .container {
-    width: 60%;
+    width: 100%;
     flex-direction: column;
     display: flex;
   }
@@ -129,7 +129,7 @@
     padding-right: 32px;
   }
   .save-container {
-    width: 63%;
+    width: 100%;
     display: flex;
     flex-direction: row-reverse;
   }
@@ -142,11 +142,11 @@
     margin-top: 8px;
   }
   .one-word-input {
-    width: 30%;
+    width: 50%;
     padding: 8px;
   }
   #sentence {
-    width: 60%;
+    width: 98%;
     padding: 16px;
   }
 </style>

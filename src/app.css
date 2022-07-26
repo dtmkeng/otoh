@@ -50,6 +50,12 @@ h1 {
   /* text-align: center; */
 }
 
+/* @media screen and (max-width: 600px) {
+  body {
+    background-color: olive;
+    overflow-y: auto;
+  }
+} */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
