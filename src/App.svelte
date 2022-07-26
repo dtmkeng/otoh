@@ -84,6 +84,7 @@
     </div>
     <div class="sentence-list">
       {#each listSentence as item}
+        <hr style="border: 1px dashed black;" />
         <div class="list">
           <div class="title">{item.word}</div>
           <span class="when">{dayjs(item.date).locale("th").toString()}</span>
@@ -100,12 +101,14 @@
     color: rgb(232, 84, 84);
   }
   .sentence-list {
+    width: 53%;
     margin-top: 32px;
     overflow: auto;
     height: 560px;
   }
 
   .list {
+    padding-top: 8px;
     margin-bottom: 14px;
   }
 
@@ -126,6 +129,7 @@
     padding-right: 32px;
   }
   .save-container {
+    width: 53%;
     display: flex;
     flex-direction: row-reverse;
   }
@@ -138,10 +142,11 @@
     margin-top: 8px;
   }
   .one-word-input {
-    width: 50%;
+    width: 30%;
     padding: 8px;
   }
   #sentence {
+    width: 50%;
     padding: 16px;
   }
 </style>
