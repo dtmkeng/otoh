@@ -146,7 +146,8 @@
     padding: 8px;
   }
   #sentence {
-    width: 98%;
+    font-size: 20px;
+    width: 90%;
     padding: 16px;
   }
 </style>
