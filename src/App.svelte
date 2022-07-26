@@ -25,11 +25,21 @@
     }
   });
 
+  const onInputKeyDown = () => {
+    errorDuplicate = "";
+    const found = listSentence.find(
+      (e) => e.word.trim().toLowerCase() === word.trim().toLowerCase()
+    );
+    if (found) {
+      errorDuplicate = "this word is existing";
+    }
+  };
+
   const onSave = () => {
     if (word.length && sentence.length) {
       listSentence = [
         {
-          word,
+          word: word.trim(),
           sentence,
           date: new Date(),
         },
@@ -50,11 +60,13 @@
       bind:value={word}
       class="one-word-input"
       placeholder="What is the word for today"
+      on:keyup={() => onInputKeyDown()}
     />
+    <span class="error">{errorDuplicate}</span>
     <div class="word-to-senten">
       <textarea
         id="sentence"
-        cols="100"
+        cols="50"
         rows="10"
         bind:value={sentence}
         on:keydown={() => onSentenceChange()}
@@ -64,7 +76,9 @@
         <button
           class="px"
           on:click={() => onSave()}
-          disabled={wordCount < 20 || word.length === 0}>Save</button
+          disabled={wordCount < 20 ||
+            word.length === 0 ||
+            errorDuplicate.length > 0}>Save</button
         >
       </div>
     </div>
@@ -81,6 +95,10 @@
 </main>
 
 <style>
+  .error {
+    font-size: 14px;
+    color: rgb(232, 84, 84);
+  }
   .sentence-list {
     margin-top: 32px;
     overflow: auto;
@@ -92,6 +110,7 @@
   }
 
   .container {
+    width: 60%;
     flex-direction: column;
     display: flex;
   }
