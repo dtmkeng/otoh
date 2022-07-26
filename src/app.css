@@ -43,6 +43,7 @@ h1 {
 }
 
 #app {
+  width: 100%;
   /* max-width: ; */
   margin: 0 auto;
   padding: 2rem;

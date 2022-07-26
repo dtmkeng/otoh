@@ -101,7 +101,7 @@
     color: rgb(232, 84, 84);
   }
   .sentence-list {
-    width: 53%;
+    width: 63%;
     margin-top: 32px;
     overflow: auto;
     height: 560px;
@@ -129,7 +129,7 @@
     padding-right: 32px;
   }
   .save-container {
-    width: 53%;
+    width: 63%;
     display: flex;
     flex-direction: row-reverse;
   }
@@ -146,7 +146,7 @@
     padding: 8px;
   }
   #sentence {
-    width: 50%;
+    width: 60%;
     padding: 16px;
   }
 </style>
