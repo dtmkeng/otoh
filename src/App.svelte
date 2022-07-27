@@ -4,6 +4,7 @@
   const keyListSentence = "list-sentect-key";
   let word = "";
   let sentence = "";
+  let keyword = "";
   $: errorDuplicate = "";
   $: listSentence = [
     {
@@ -50,6 +51,15 @@
       localStorage.setItem(keyListSentence, JSON.stringify(listSentence));
     }
   };
+
+  const onSearch = () => {
+    const list = window.localStorage.getItem(keyListSentence);
+    console.log(keyword, list);
+    const filter = JSON.parse(list).filter((e) =>
+      e.word.toLowerCase().includes(keyword)
+    );
+    listSentence = [...filter];
+  };
 </script>
 
 <main>
@@ -67,7 +77,7 @@
       <textarea
         id="sentence"
         cols="50"
-        rows="10"
+        rows="5"
         bind:value={sentence}
         on:keydown={() => onSentenceChange()}
       />
@@ -83,10 +93,21 @@
       </div>
     </div>
     <div class="sentence-list">
+      <div class="seach-list-container">
+        <input
+          bind:value={keyword}
+          type="text"
+          on:keyup={() => onSearch()}
+          class="search-input"
+          placeholder="Seacrh word"
+        />
+      </div>
       {#each listSentence as item}
         <hr style="border: 1px dashed black;" />
         <div class="list">
-          <div class="title">{item.word}</div>
+          <div class="title">
+            {item.word.charAt(0).toUpperCase() + item.word.slice(1)}
+          </div>
           <span class="when">{dayjs(item.date).locale("th").toString()}</span>
           <span>{item.sentence}</span>
         </div>
@@ -96,6 +117,10 @@
 </main>
 
 <style>
+  .search-input {
+    width: 30%;
+    padding: 8px;
+  }
   .error {
     font-size: 14px;
     color: rgb(232, 84, 84);
