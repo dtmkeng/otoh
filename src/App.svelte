@@ -140,6 +140,8 @@
   }
 
   .list {
+    display: flex;
+    flex-direction: column;
     padding-top: 8px;
     margin-bottom: 14px;
   }
