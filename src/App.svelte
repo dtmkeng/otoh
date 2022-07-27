@@ -102,25 +102,34 @@
           placeholder="Seacrh word"
         />
       </div>
-      {#if listSentence.length > 0}
-        {#each listSentence as item}
-          <hr style="border: 1px dashed black;" />
-          <div class="list">
-            <div class="title">
-              {item.word.charAt(0).toUpperCase() + item.word.slice(1)}
+      <div class="list-container">
+        {#if listSentence.length > 0}
+          {#each listSentence as item}
+            <hr style="border: 1px dashed black;" />
+            <div class="list">
+              <div class="title">
+                {item.word.charAt(0).toUpperCase() + item.word.slice(1)}
+              </div>
+              <span class="when"
+                >{dayjs(item.date).locale("th").toString()}</span
+              >
+              <span>{item.sentence}</span>
             </div>
-            <span class="when">{dayjs(item.date).locale("th").toString()}</span>
-            <span>{item.sentence}</span>
-          </div>
-        {/each}
-      {:else}
-        <div class="not-found-title">Content not found</div>
-      {/if}
+          {/each}
+        {:else}
+          <div class="not-found-title">Content not found</div>
+        {/if}
+      </div>
     </div>
   </div>
 </main>
 
 <style>
+  .list-container {
+    width: 100%;
+    overflow: auto;
+    height: 300px;
+  }
   .not-found-title {
     margin-top: 8px;
   }
@@ -135,8 +144,6 @@
   .sentence-list {
     width: 100%;
     margin-top: 32px;
-    overflow: auto;
-    height: 350px;
   }
 
   .list {
