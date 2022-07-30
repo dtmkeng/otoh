@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import dayjs from "dayjs";
   import Title from "./lib/components/Title.svelte";
+  import Container from "./lib/components/Container.svelte";
+  import InputText from "./lib/components/InputText.svelte";
   const keyListSentence = "list-sentect-key";
   let word = "";
   let sentence = "";
@@ -28,6 +30,7 @@
   });
 
   const onInputKeyDown = () => {
+    console.log(word);
     errorDuplicate = "";
     const found = listSentence.find(
       (e) => e.word.trim().toLowerCase() === word.trim().toLowerCase()
@@ -64,14 +67,12 @@
 </script>
 
 <main>
-  <div class="container">
+  <Container>
     <Title text={"What is the word for today"} />
-    <input
-      type="text"
-      bind:value={word}
-      class="one-word-input"
-      placeholder="What is the word for today"
-      on:keyup={() => onInputKeyDown()}
+    <InputText
+      bind:values={word}
+      placeHolder={"What is the word for today"}
+      onKeyUp={() => onInputKeyDown()}
     />
     <span class="error">{errorDuplicate}</span>
     <div class="word-to-senten">
@@ -80,7 +81,7 @@
         cols="50"
         rows="5"
         bind:value={sentence}
-        on:keydown={() => onSentenceChange()}
+        on:keydown={onSentenceChange}
       />
       <span class="number-of-word">Number of word: {wordCount}</span>
       <div class="save-container">
@@ -122,7 +123,7 @@
         {/if}
       </div>
     </div>
-  </div>
+  </Container>
 </main>
 
 <style>
@@ -154,11 +155,6 @@
     margin-bottom: 14px;
   }
 
-  .container {
-    width: 100%;
-    flex-direction: column;
-    display: flex;
-  }
   .when {
     font-size: 12px;
   }
@@ -183,10 +179,7 @@
     display: flex;
     margin-top: 8px;
   }
-  .one-word-input {
-    width: 50%;
-    padding: 8px;
-  }
+
   #sentence {
     font-size: 20px;
     width: 90%;

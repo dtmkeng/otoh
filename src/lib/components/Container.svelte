@@ -1,0 +1,11 @@
+<div class="container">
+  <slot />
+</div>
+
+<style>
+  .container {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+  }
+</style>
