@@ -30,7 +30,6 @@
   });
 
   const onInputKeyDown = () => {
-    console.log(word);
     errorDuplicate = "";
     const found = listSentence.find(
       (e) => e.word.trim().toLowerCase() === word.trim().toLowerCase()
