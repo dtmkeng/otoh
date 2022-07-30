@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import dayjs from "dayjs";
+  import Title from "./lib/components/Title.svelte";
   const keyListSentence = "list-sentect-key";
   let word = "";
   let sentence = "";
@@ -64,7 +65,7 @@
 
 <main>
   <div class="container">
-    <p>What is the word for today</p>
+    <Title text={"What is the word for today"} />
     <input
       type="text"
       bind:value={word}
